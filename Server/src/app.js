@@ -5,8 +5,13 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from "./routes/userRoute.js"
 import cookieParser from "cookie-parser";
 
+
+import cors from 'cors';
+
 // Initialize the express app
 const app = express();
+
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 // Configure dotenv to load environment variables from a .env file
 dotenv.config();
@@ -36,7 +41,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start the server
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
